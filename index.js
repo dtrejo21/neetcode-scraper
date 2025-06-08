@@ -5,14 +5,17 @@ const getRelatedPageIdByName = require("./notion/getRelatedPageId");
 (async () => {
   const data = await scrapeProblems();
 
-  for( const { pattern, problems } of data) {
+  for (const { pattern, problems } of data) {
     if (!pattern) {
       console.warn("Skipping because pattern is undefined or empty.");
       continue; // skip this iteration if pattern is invalid
     }
 
     // fetch relatedPageId once for the pattern
-    const relatedPageId = await getRelatedPageIdByName(pattern, process.env.RELATION_DATABASE_ID);
+    const relatedPageId = await getRelatedPageIdByName(
+      pattern,
+      process.env.RELATION_DATABASE_ID
+    );
 
     if (!relatedPageId) {
       console.warn(`No related page found for pattern: ${pattern}`);
@@ -25,6 +28,3 @@ const getRelatedPageIdByName = require("./notion/getRelatedPageId");
     }
   }
 })();
-
-
-

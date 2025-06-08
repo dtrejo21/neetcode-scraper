@@ -1,4 +1,4 @@
-const notion = require("./client")
+const notion = require("./client");
 
 async function addProblemToNotion({ name, url, difficulty, relatedPageId }) {
   // Construct properties upfront
@@ -28,7 +28,7 @@ async function addProblemToNotion({ name, url, difficulty, relatedPageId }) {
   };
 
   try {
-    // Use the full properties object here
+    // use the full properties object here
     await notion.pages.create({
       parent: { database_id: process.env.NOTION_DATABASE_ID },
       properties: properties,

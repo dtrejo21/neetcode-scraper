@@ -1,4 +1,4 @@
-const notion = require("./client")
+const notion = require("./client");
 
 async function getRelatedPageIdByName(pattern, databaseId) {
   const response = await notion.databases.query({
